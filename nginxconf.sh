@@ -10,7 +10,7 @@ upstream_config="upstream backend {
 
 server_config="server {
     listen 80;
-    server_name ec2-13-235-74-174.ap-south-1.compute.amazonaws.com;
+    server_name ec2-13-232-211-151.ap-south-1.compute.amazonaws.com;
 
     location / {
         proxy_pass http://backend;
