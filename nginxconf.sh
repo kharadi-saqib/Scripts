@@ -5,12 +5,12 @@ nginx_conf="/etc/nginx/nginx.conf"
 
 # Define the upstream and server configurations
 upstream_config="upstream backend {
-    server 63.250.52.91:6002;
+    server backendserverip;
 }"
 
 server_config="server {
     listen 80;
-    server_name ec2-13-233-196-48.ap-south-1.compute.amazonaws.com;
+    server_name example.com or IP;
 
     location / {
         proxy_pass http://backend;
