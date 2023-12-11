@@ -1,7 +1,7 @@
 #!/bin/bash
 WEBAPP_FOLDER_NAME=FGICWebApp
-DATABASE_URL=postgres://coderize:coderize@localhost:5432/iads
-AIRFLOW_DATABASE_URL="postgresql+psycopg2://coderize:coderize@localhost/iads"
+DATABASE_URL=postgres://coderize:coderize@172.31.47.118:5432/iads
+AIRFLOW_DATABASE_URL="postgresql+psycopg2://coderize:coderize@172.31.47.118/iads"
 GITLAB_USERNAME="gitlab+deploy-token-3719258"
 GITLAB_PASSWORD="NqbfDYkKoqt_zPD518b6"
 
