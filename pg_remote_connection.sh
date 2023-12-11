@@ -4,7 +4,7 @@
 PG_DATA_DIR="/etc/postgresql/14/main"
 
 # Specify the IP address, user, database, and authentication method
-IP_ADDRESS="172.31.8.216/32"
+IP_ADDRESS="172.31.43.111/32"
 DATABASE="all"
 USER="coderize"
 AUTH_METHOD="md5"
