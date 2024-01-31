@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# Function to check if virtualenv is installed
+check_python_venv_installed() {
+    command -v python3 -m venv &> /dev/null
+}
+
+# Function to create and activate a virtual environment
+create_virtualenv() {
+    cd "$1"
+
+    # Check if python3 -m venv is available in the PATH
+    if ! check_python_venv_installed; then
+        echo "Error: python3 -m venv command not found. Make sure python3-venv is installed."
+        exit 1
+    fi
+
+    # Check if venv directory already exists
+    if [ -d "venv" ]; then
+        echo "Virtual environment already exists. Activating..."
+        source "venv/bin/activate" || { echo "Error: Unable to activate virtual environment."; exit 1; }
+    else
+        # Create the virtual environment
+        python3 -m venv venv
+
+        # Activate the virtual environment
+        source "$1/venv/bin/activate" || { echo "Error: Unable to activate virtual environment."; exit 1; }
+    fi
+}
+
+# Get user input for the directory
+read -p "Enter the directory path where you want to create and activate the virtual environment: " user_directory
+
+# Check if the directory exists
+if [ ! -d "$user_directory" ]; then
+    # Directory does not exist, ask for permission
+    read -p "The directory does not exist. Do you want to create it? (y/n): " create_directory_permission
+    if [ "$create_directory_permission" = "y" ]; then
+        mkdir -p "$user_directory"
+        create_virtualenv "$user_directory"
+    else
+        echo "Permission not granted. Exiting."
+        exit 1
+    fi
+else
+    # Directory exists, activate virtualenv
+    create_virtualenv "$user_directory"
+fi
+
+# Print a message indicating successful setup
+echo "Virtual environment created and activated successfully in the directory: $user_directory"
